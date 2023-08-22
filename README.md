@@ -1,3 +1,3 @@
-# Programming Patterns - EQ 3 - Vanier
+# Programming Patterns - Fall 2023 - Vanier
 
-This repository contains materials for Programming Patterns course (EQ 3).
+This repository contains materials for Programming Patterns course Fall 2023.
