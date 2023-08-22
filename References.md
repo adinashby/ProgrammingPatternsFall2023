@@ -1,4 +1,4 @@
-[](https://docs.oracle.com/javase/tutorial/)
-[](https://www.tutorialspoint.com/java/index.htm)
-[](https://www.interviewcake.com/)
-[](https://www.geeksforgeeks.org/)
+[Oracle Tutorials](https://docs.oracle.com/javase/tutorial/)
+[Tutorialpoint](https://www.tutorialspoint.com/java/index.htm)
+[Interviewcake](https://www.interviewcake.com/)
+[GeeksforGeeks](https://www.geeksforgeeks.org/)
