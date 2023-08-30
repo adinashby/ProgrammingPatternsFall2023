@@ -626,7 +626,7 @@ One terminal operation is allowed. **forEach** applies the same function to each
 ## 6.5. Examples
 
 ```java
-    // 1. Integer Stream
+		// 1. Integer Stream
 		IntStream
 			.range(1, 10)
 			.forEach(System.out::print);
@@ -691,7 +691,7 @@ One terminal operation is allowed. **forEach** applies the same function to each
 		Stream<String> rows1 = Files.lines(Paths.get("data.txt"));
 		int rowCount = (int)rows1
 			.map(x -> x.split(","))
-            .filter(x -> x.length == 3)
+            		.filter(x -> x.length == 3)
 			.count();
 		System.out.println(rowCount + " rows.");
 		rows1.close();
@@ -700,12 +700,12 @@ One terminal operation is allowed. **forEach** applies the same function to each
 		Stream<String> rows2 = Files.lines(Paths.get("data.txt"));
 		rows2
 			.map(x -> x.split(","))
-            .filter(x -> x.length == 3)
+			.filter(x -> x.length == 3)
 			.filter(x -> Integer.parseInt(x[1]) > 15)
 			.forEach(x -> System.out.println(x[0] + "  " + x[1] + "  " + x[2]));
 		rows2.close();
 
-    // 12. Reduction - sum
+    		// 12. Reduction - sum
 		double total = Stream.of(7.3, 1.5, 4.8)
 			.reduce(0.0, (Double a, Double b) -> a + b);
 		System.out.println("Total = " + total);
@@ -714,6 +714,18 @@ One terminal operation is allowed. **forEach** applies the same function to each
 		IntSummaryStatistics summary = IntStream.of(7, 2, 19, 88, 73, 4, 10)
 			.summaryStatistics();
 		System.out.println(summary);
+
+		// .getAsDouble()
+        	// .collect(Collectors.toList())
+
+ 		// list = {"a", "b", "c"}
+        	// "abc"
+        	// String[] myArray = "abc".split("")
+        	// .collect(Collectors.joining("*")
+        	// a*b*c
+        
+        	// Integer
+        	// .mapToInt(i -> i)
 ```
 
 data.txt
