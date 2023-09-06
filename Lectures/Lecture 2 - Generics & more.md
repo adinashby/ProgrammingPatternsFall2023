@@ -760,3 +760,213 @@ public class Driver {
 
 }
 ```
+# 5. Exercise
+
+## Question
+Create a generic stack in a way that the underlying structure is a LinkedList instead of an array.
+
+## Solution
+
+```java
+public class LinkedList<E> {
+
+    Node head;
+    int size;
+
+    class Node {
+
+        E e;
+        Node next;
+    }
+
+    public void insert(E e) {
+        Node node = new Node();
+        node.e = e;
+        
+        if (head == null) {
+            head = node;
+        } else {
+            Node n = head;
+
+            while (n.next != null) {
+                n = n.next;
+            }
+
+            n.next = node;
+        }
+
+        ++size;
+    }
+
+    public void insertAtStart(E e) {
+        Node node = new Node();
+
+        node.e = e;
+        node.next = head;
+
+        head = node;
+
+        ++size;
+    }
+
+    public void insertAt(int index, E e) {
+        Node node = new Node();
+
+        node.e = e;
+        node.next = null;
+
+        if (index == 0) {
+            insertAtStart(e);
+        } else {
+            Node n = head;
+
+            for (int i = 0; i < index - 1; i++) {
+                n = n.next;
+            }
+
+            node.next = n.next;
+            n.next = node;
+
+            ++size;
+        }
+    }
+
+    public E deleteAt(int index) {
+        E deletedElement;
+
+        if (index == 0) {
+            deletedElement = head.e;
+            head = head.next;
+        } else {
+            Node n = head;
+
+            for (int i = 0; i < index - 1; i++) {
+                n = n.next;
+            }
+            deletedElement = n.next.e;
+            n.next = n.next.next;
+        }
+
+        --size;
+
+        return deletedElement;
+    }
+
+    public int size() {
+        return size;
+    }
+
+    public E get(int index) {
+        Node n = head;
+
+        for (int i = 0; i < index; i++) {
+            n = n.next;
+        }
+
+        return n.e;
+    }
+
+    public void show() {
+        Node n = head;
+
+        while (n.next != null) {
+            System.out.print(n.e + ", ");
+            n = n.next;
+        }
+
+        System.out.println(n.e);
+    }
+}
+```
+
+```java
+class Stack<E> {
+
+    LinkedList<E> myList = new LinkedList();
+    private int top;
+
+    // Utility function to add an element `x` to the stack
+    public void push(E e) {
+        System.out.println("Inserting " + e);
+        myList.insert(e);
+    }
+
+    // Utility function to pop a top element from the stack
+    public E pop() {
+        // check for stack underflow
+        if (isEmpty()) {
+            System.out.println("Underflow\nProgram Terminated");
+            System.exit(-1);
+        }
+
+        System.out.println("Removing " + peek());
+
+        // decrease stack size by 1 and (optionally) return the popped element
+        return myList.deleteAt(myList.size() - 1);
+    }
+
+    // Utility function to return the top element of the stack
+    public E peek() {
+        if (!isEmpty()) {
+            return myList.get(getTop());
+        } else {
+            System.exit(-1);
+        }
+
+        return null;
+    }
+
+    // Utility function to check if the stack is empty or not
+    public boolean isEmpty() {
+        return myList.size() == 0;
+    }
+
+    public int getTop() {
+        this.top = myList.size() - 1;
+
+        return top;
+    }
+}
+```
+
+```java
+    public static void main(String[] args) {
+//        LinkedList<Integer> myList = new LinkedList();
+//        
+//        System.out.println(myList.size());
+//        myList.insert(5);
+//        System.out.println(myList.size());
+//        
+//        myList.insertAtStart(523);
+//        System.out.println(myList.size());
+//        
+//        myList.insertAt(1, 61);
+//        System.out.println(myList.size());
+//        
+//        myList.deleteAt(1);
+//        System.out.println(myList.size());
+//        
+//        myList.show();
+//        myList.insert(35);
+//        myList.insert(351);
+//        
+//        myList.show();
+//        System.out.println(myList.get(myList.size() - 1));
+
+//        Stack<Integer> myStack = new Stack();
+//
+//        myStack.push(32);
+//        myStack.push(13);
+//        myStack.push(53);
+//        System.out.println(myStack.peek());
+//        System.out.println(myStack.pop());
+
+        Stack<String> myStack = new Stack();
+
+        myStack.push("asd");
+        myStack.push("bc");
+        myStack.push("qc");
+        System.out.println(myStack.peek());
+        System.out.println(myStack.pop());
+    }
+```
